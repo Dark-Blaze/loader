@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Parser } from "../utils/parser";
-
 
 @Component({
   selector: 'app-upload',
@@ -10,16 +9,21 @@ import { Parser } from "../utils/parser";
 export class UploadComponent implements OnInit {
   result: any = [];
   parser = new Parser();
+  showGraph:boolean = false;
+
+  @Output() notifyEvent = new EventEmitter<any>();
+  
   constructor() {
   }
 
   ngOnInit() {
   }
-
   onChange(e) {
     let data;
-    this.parser.getParsedHTMLElement("line", e.target).then((response) => {
+    const that = this;
+    this.parser.getParsedHTMLElement("line", e.target).then(function(response){
       data = response;
+      that.notifyEvent.emit({d:data, show:true})
     })
   }
 }
