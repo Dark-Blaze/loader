@@ -1,7 +1,9 @@
 import { GraphUtils } from "../utils/graphUtils";
-import { debug } from "util";
 
 
+/**
+ * This parser class will read and format the data as per the required chart.
+ */
 export class Parser {
     graphUtils: GraphUtils = new GraphUtils();
     dataPoints: any;
@@ -13,6 +15,13 @@ export class Parser {
         return this.readUploadedFile(el.files[0]);
     }
 
+    /**
+     * 
+     * @param file File
+     * @returns Promise object
+     * @description
+     * Responsible for reading a file and passing it to the graph utils to format it according to the type
+     */
     private readUploadedFile(file:any) {
         const reader = new FileReader();
         return new Promise((resolve, reject) => {
