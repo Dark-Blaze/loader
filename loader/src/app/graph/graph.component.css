@@ -1,0 +1,28 @@
+.graph-holder {
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 80px;
+    background: #fff;
+    overflow: auto;
+    border-radius: 3px;
+    box-shadow: 0px 2px 14px -5px #ccc;
+    position: relative;
+}
+
+
+#backButton{
+    padding: 10px;
+    background: rebeccapurple;
+    width: 100px;
+    text-align: center;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    height: 30px;
+    position: absolute;
+    line-height: 30px;
+    border: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+}

@@ -1,3 +1,11 @@
-<input type="file" name="filename" id="filename" (input)="onChange($event)">
-<button id="upload">upload</button>
+<label for="filename">
+  Click here to browse and upload</label>
+<input type="file" name="filename" id="filename" (input)="onChange($event)" accept=".csv" />
 
+<div class="wrapper" [hidden]='hideLoader'>
+  <div id="spinner"></div>
+</div>
+
+<div class="error" [hidden]="hideError">
+  Invalid or Empty file!
+</div>

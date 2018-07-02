@@ -1,25 +1,19 @@
-import { Component, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.css']
 })
-export class GraphComponent implements OnInit, AfterViewInit, DoCheck {
-  ngOnInit() {
-  }
+export class GraphComponent {
 
   @Input()
   graphData: any = [];
 
+  @Output() notifyEvent = new EventEmitter<any>();
 
-  ngDoCheck(){
-    debugger;
-  }
+  view: any[] = [900, 500];
 
-  view: any[] = [700, 400];
-
-  // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
@@ -33,15 +27,10 @@ export class GraphComponent implements OnInit, AfterViewInit, DoCheck {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  // line, area
   autoScale = true;
 
   constructor() {
-    
-  }
 
-
-  ngAfterViewInit(){
   }
 
   onSelect(event) {

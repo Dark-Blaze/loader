@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { RouterModule, Routes, Route, RoutesRecognized } from "@angular/router";
 import { AppComponent } from './app.component';
 import { DetailsComponent } from './details/details.component';
 import { UploadComponent } from './upload/upload.component';

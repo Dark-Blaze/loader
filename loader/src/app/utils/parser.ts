@@ -1,4 +1,5 @@
 import { GraphUtils } from "../utils/graphUtils";
+import { debug } from "util";
 
 
 export class Parser {
@@ -20,7 +21,11 @@ export class Parser {
                 reject(new Error("Process Terminated! Please refresh the page and try again."))
             }
             reader.onload = () => {
-                resolve(this.graphUtils.parseDataForLineGraph(reader.result.split(/\r|\n|\r\n/)));
+                const result = reader.result;
+                if(!result.trim()){
+                    reject(new Error("File invalid"));
+                }
+                resolve(this.graphUtils.parseDataForLineGraph(result.split(/\r|\n|\r\n/)));
             }
             reader.readAsText(file);
         });
