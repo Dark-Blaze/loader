@@ -6,12 +6,11 @@ import { GraphUtils } from "../utils/graphUtils";
  */
 export class Parser {
     graphUtils: GraphUtils = new GraphUtils();
-    dataPoints: any;
 
     constructor() {
     }
 
-    private async parse(type: string, el: HTMLInputElement) {
+    private parse(type: string, el: HTMLInputElement) {
         return this.readUploadedFile(el.files[0]);
     }
 
@@ -25,12 +24,18 @@ export class Parser {
     private readUploadedFile(file:any) {
         const reader = new FileReader();
         return new Promise((resolve, reject) => {
+            /**
+             * If there is an error while reading
+             */
             reader.onerror = () => {
                 reader.abort();
                 reject(new Error("Process Terminated! Please refresh the page and try again."))
             }
             reader.onload = () => {
                 const result = reader.result;
+                /**
+                 * If the result it empty
+                 */
                 if(!result.trim()){
                     reject(new Error("File invalid"));
                 }
